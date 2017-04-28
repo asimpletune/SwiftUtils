@@ -5,6 +5,8 @@ infix operator ∋
 infix operator ∉
 infix operator ∌
 
+// TODO: ℝ, ℚ, ℤ, ℕ, i.e. print(1 ∈ ℕ)
+
 struct CollectionCount<C> where C: Collection {
     let count: C.IndexDistance
     init(_ value: C.IndexDistance) {
