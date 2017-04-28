@@ -1,27 +1,16 @@
 prefix operator |
 postfix operator |
-protocol OperationResult {
-    var val: Int { get }
-}
-struct CollectionSize: OperationResult {
-    let val: Int
-    init(_ v: Int) {
-      val = v
+struct CollectionCount<C> where C: Collection {
+    let count: C.IndexDistance
+    init(_ value: C.IndexDistance) {
+      count = value
     }
-    static prefix func | (setSize: CollectionSize) -> Int {
-      return setSize.val
+    static prefix func | (setSize: CollectionCount) -> C.IndexDistance {
+      return setSize.count
     }
 }
-extension Array {
-    static postfix func | (operand: Array) -> CollectionSize {
-      return CollectionSize(operand.count)
+extension Collection {
+    static postfix func | (operand: Self) -> CollectionCount<Self> {
+      return CollectionCount(operand.count)
     }
 }
-
-let A = [1, 2, 3]
-let B: [Int]?
-B = [4, 5, 6]
-
-
-print(|[]|)
-print(A[0 ..< |A|])
