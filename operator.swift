@@ -4,6 +4,8 @@ infix operator ∈
 infix operator ∋
 infix operator ∉
 infix operator ∌
+infix operator ⊆
+infix operator ⊇
 
 // TODO: ℝ, ℚ, ℤ, ℕ, i.e. print(1 ∈ ℕ)
 
@@ -34,5 +36,11 @@ extension Set {
   }
   static func ∌ (aSet: Set, element: Element) -> Bool {
     return !aSet.contains(element)
+  }
+  static func ⊆ (leftSet: Set, rightSet: Set) -> Bool {
+    return leftSet.isSubset(of: rightSet)
+  }
+  static func ⊇ (leftSet: Set, rightSet: Set) -> Bool {
+    return leftSet.isSuperset(of: rightSet)
   }
 }
