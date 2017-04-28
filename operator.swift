@@ -6,6 +6,8 @@ infix operator ∉
 infix operator ∌
 infix operator ⊆
 infix operator ⊇
+infix operator ⋂
+infix operator ⋃
 
 // TODO: ℝ, ℚ, ℤ, ℕ, i.e. print(1 ∈ ℕ)
 
@@ -42,5 +44,11 @@ extension Set {
   }
   static func ⊇ (leftSet: Set, rightSet: Set) -> Bool {
     return leftSet.isSuperset(of: rightSet)
+  }
+  static func ⋂ (leftSet: Set, rightSet: Set) -> Set {
+    return leftSet.intersection(rightSet)
+  }
+  static func ⋃ (leftSet: Set, rightSet: Set) -> Set {
+    return leftSet.union(rightSet)
   }
 }
